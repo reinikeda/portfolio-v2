@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Daiva Reinike portfolio</title>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <nav>
+            <ul class="flex-menu">
+                <li class="menu-float-left">
+                    <img src="{% static 'img/python.png' %}" alt="Python logo">
+                </li>
+                <li>
+                    <a href="{% url 'index' %}">Home</a>
+                </li>
+                {% comment %} <li>
+                    <a href="{% url 'about' %}">About</a>
+                </li> {% endcomment %}
+                <li>
+                    <a href="#">Works</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                {% comment %} <li>
+                    <a href="https://github.com/reinikeda" target="_blank"><img src="{% static 'img/github.png' %}" alt="Github logo"></a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/daiva-reinike" target="_blank"><img src="{% static 'img/linkedin.png' %}" alt="LinkedIn logo"></a>
+                </li> {% endcomment %}
+            </ul>
+        </nav>
+        <header>
+            <div class="flex-header">
+                <div class="auto-write">
+                    <h1>Hi, my name is Daiva</h1>
+                    <h2>I am a Junior Python Developer</h2>
+                </div>     
+            </div>
+        </header>
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
+        <aside>
+            <div class="sidebar-container">
+                <div>
+                  <h4>Your time</h4>
+                  <div id="your-time"></div>
+                </div>
+                <div>
+                    <h4>My time</h4>
+                    <div id="my-time"></div>
+                  </div>
+                  <div>
+                    <h4>Find me here</h4>
+                    <ul class="link-img">
+                        <li>
+                            <a href="https://github.com/reinikeda" target="_blank"><img src="{% static 'img/github.png' %}" alt="Github logo"></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/daiva-reinike" target="_blank"><img src="{% static 'img/linkedin.png' %}" alt="LinkedIn logo"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>        
+        </aside>
+        <footer>
+            <div>&copy; 2023 Daiva Reinikė</div>
+        </footer>
+        <script src="{% static 'js/clock.js' %}"></script>
+    </body>
+</html>
