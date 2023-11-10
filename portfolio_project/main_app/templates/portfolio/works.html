@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1>MY WORKS</h1>
+<hr>
+{% if projects %}
+    {% for project in projects %}
+    <div>
+        <div>
+            <h2>{{ project.name }}</h2>
+        </div>
+        <div class="content-flex">
+            <div class="image-center">
+                <div id="carousel-{{ project.id }}" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% for screenshot in project.screenshot_set.all %}
+                            <li data-target="#carousel-{{ project.id }}" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                        {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                        {% for screenshot in project.screenshot_set.all %}
+                            <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                                <img src="{{ screenshot.image.url }}" alt="{{ project.name }} screenshot" class="carousel-image">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel-{{ project.id }}" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-{{ project.id }}" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>        
+            <div>
+                <div>{{ project.description|safe }}</div>
+                <div class="link-img-2"><a href="{{ project.link }}" target="_blank">Github link to project<img src="{% static 'img/github.png' %}" alt="Github logo"></a></div>
+            </div>
+        </div>
+    </div>
+    <hr class="line">
+    {% endfor %}
+{% else %}
+    <p>Error. No database found.</p>
+{% endif %}
+{% endblock content %}

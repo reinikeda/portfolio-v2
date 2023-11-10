@@ -15,3 +15,12 @@ class IndexView(generic.TemplateView):
         context['learning'] = learning.text
         context['certificates'] = models.Certificate.objects.all().order_by('date')
         return context
+
+
+class WorksView(generic.TemplateView):
+    template_name = 'portfolio/works.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['projects'] = models.ProjectInformation.objects.all().order_by('-date')
+        return context

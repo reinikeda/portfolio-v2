@@ -150,6 +150,11 @@ ul {
     width: 50px;
     height: auto;
 }
+.link-img-2 img {
+    width: 30px;
+    height: auto;
+    padding-left: 0.5rem;
+}
 .last-line {
     margin: 2rem 10rem 0rem 10rem;
 }
@@ -164,7 +169,7 @@ ul {
     width: 250px;
     border-radius: 50%;
 }
-.carousel-image-certificate {
+.carousel-image {
     width: 500px;
     height: auto;
     /* padding-left: 1rem; */
@@ -209,7 +214,7 @@ ul {
         align-self: center;
         /* border: 1px solid white; */
     }
-    .carousel-image-certificate {
+    .carousel-image {
         width: 350px;
     }
 }
@@ -245,7 +250,7 @@ ul {
 
 /* Medium (MD) */
 @media (min-width: 769px) and (max-width: 992px) {
-    .carousel-image-certificate {
+    .carousel-image {
         width: 350px;
     }
 }
