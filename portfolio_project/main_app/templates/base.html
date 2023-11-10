@@ -20,21 +20,12 @@
                 <li>
                     <a href="{% url 'index' %}">Home</a>
                 </li>
-                {% comment %} <li>
-                    <a href="{% url 'about' %}">About</a>
-                </li> {% endcomment %}
                 <li>
                     <a href="{% url 'works' %}">Works</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="{% url "contacts" %}">Contact</a>
                 </li>
-                {% comment %} <li>
-                    <a href="https://github.com/reinikeda" target="_blank"><img src="{% static 'img/github.png' %}" alt="Github logo"></a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/daiva-reinike" target="_blank"><img src="{% static 'img/linkedin.png' %}" alt="LinkedIn logo"></a>
-                </li> {% endcomment %}
             </ul>
         </nav>
         <header>

@@ -24,3 +24,7 @@ class WorksView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context['projects'] = models.ProjectInformation.objects.all().order_by('-date')
         return context
+    
+
+class ContactView(generic.TemplateView):
+    template_name = 'portfolio/contacts.html'
