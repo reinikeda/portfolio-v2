@@ -3,20 +3,53 @@
 {% block content %}
 <h1>WELCOME TO MY PORTFOLIO!</h1>
 <hr>
-<div>The page in under construction...</div>
-<hr>
 <div class="content-flex">
     <div class="image-center">
         <img src="{% static 'img/me.jpg' %}" alt="My photo" class="round-picture">
     </div>
     <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mollis aliquam purus, in elementum nibh maximus vitae. Aliquam sollicitudin nunc at neque aliquet, ac vestibulum ligula dapibus. Nullam efficitur diam sed sem tristique, vitae euismod dui eleifend. Aenean blandit nisl vitae libero ullamcorper facilisis. Fusce tempor efficitur orci, id fermentum nibh interdum eget. Nullam vitae nibh vestibulum augue pulvinar egestas. Morbi ac sem sollicitudin, molestie turpis quis, accumsan purus. Praesent nec dapibus ligula, ut feugiat nibh. Etiam sit amet accumsan nisl, non ultricies nulla. Sed tortor magna, tincidunt id justo at, sollicitudin mollis dolor. Mauris iaculis odio nec sagittis fringilla. Vivamus eget gravida massa. Ut sed semper ligula, sit amet imperdiet purus. Duis commodo sagittis arcu id venenatis.</p>
-        <p>Donec a ligula interdum, egestas est vel, vestibulum lorem. Aenean maximus a felis quis ornare. Phasellus scelerisque magna ligula, eu cursus leo bibendum nec. Curabitur tristique mollis dui a ullamcorper. Nulla facilisi. Maecenas luctus risus ut odio vehicula, ac placerat sem aliquet. Morbi vel bibendum nibh.</p>
+        {% if welcome %}
+            {{ welcome|safe }}
+        {% else %}
+            <p>Error! No text found.</p>
+        {% endif %}
     </div>
 </div>
 <hr>
-<div>
-    <p>Nullam ullamcorper eros eu leo mattis, quis sollicitudin nisi maximus. Ut ut maximus nunc. Sed faucibus turpis arcu. Etiam consectetur tincidunt urna placerat fermentum. Phasellus vitae quam in felis eleifend imperdiet nec sit amet nisi. Nulla sollicitudin semper eros. Praesent ante nisl, semper nec tincidunt a, eleifend sit amet quam.</p>
+<div class="content-flex">
+    <div class="image-center">
+        {% if certificates %}
+            <div id="carousel-certificates" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {% for certificate in certificates %}
+                        <li data-target="#carousel-certificates" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                    {% for certificate in certificates %}
+                        <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                            <img src="{{ certificate.image.url }}" alt="{{ certificate.course }} certificate" class="carousel-image-certificate">
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carousel-certificates" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-certificates" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+        {% else %}
+            <p>Error. No certificates found.</p>
+        {% endif %}
+    </div>
+    <div class="tinymce-link">
+        {% if learning %}
+            {{ learning|safe }}
+        {% else %}
+            <p>Error! No text found.</p>
+        {% endif %}
+    </div>
 </div>
 <hr class="last-line">
 {% endblock content %}
