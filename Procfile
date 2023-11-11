@@ -1,2 +1,2 @@
-release: python ./manage.py migrate && python ./manage.py collectstatic --noinput
+release: python portfolio_project/manage.py migrate && python portfolio_project/manage.py collectstatic --noinput
 web: gunicorn --pythonpath portfolio_project portfolio_project.wsgi
